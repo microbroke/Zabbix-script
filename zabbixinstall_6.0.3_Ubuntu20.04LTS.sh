@@ -19,7 +19,7 @@ apt install mysql-server
 
 # a. Add exclusion for zabbix-package
 touch /etc/dpkg/dpkg.cfg.d/excludes
-sed -i "path-include=/usr/share/doc/zabbix*" /etc/dpkg/dpkg.cfg.d/excludes
+echo "path-include=/usr/share/doc/zabbix*" >> /etc/dpkg/dpkg.cfg.d/excludes
 
 # b. Install Zabbix repository
 wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-3+ubuntu20.04_all.deb
