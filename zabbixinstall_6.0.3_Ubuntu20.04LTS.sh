@@ -22,8 +22,10 @@ touch /etc/dpkg/dpkg.cfg.d/excludes
 echo "path-include=/usr/share/doc/zabbix*" >> /etc/dpkg/dpkg.cfg.d/excludes
 
 # b. Install Zabbix repository
-wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-3+ubuntu20.04_all.deb
-dpkg -i zabbix-release_6.0-3+ubuntu20.04_all.deb
+#wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-3+ubuntu20.04_all.deb
+#dpkg -i zabbix-release_6.0-3+ubuntu20.04_all.deb
+wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
+dpkg -i zabbix-release_6.0-1+ubuntu20.04_all.deb
 apt update
 
 # c. Install Zabbix server, frontend, agent
