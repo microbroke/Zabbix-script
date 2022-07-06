@@ -29,7 +29,7 @@ dpkg -i zabbix-release_6.0-1+ubuntu20.04_all.deb
 apt update
 
 # c. Install Zabbix server, frontend, agent
-apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent zabbix-sql-scripts
 
 # d. Create initial database
 sudo mysql -uroot -e "create database zabbix character set utf8 collate utf8_bin;"
@@ -37,7 +37,8 @@ sudo mysql -uroot -e "create user zabbix@localhost identified by '${mysqlzabbixp
 sudo mysql -uroot -e "grant all privileges on zabbix.* to zabbix@localhost;"
 
 # On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
-zcat /usr/share/doc/zabbix-server-mysql*/server.sql.gz | mysql -uzabbix -p$mysqlzabbixpw zabbix
+#zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p$mysqlzabbixpw zabbix
+zcat /usr/share/doc/zabbix-sql-scripts/mysql/server.sql.gz | mysql -uzabbix -p$mysqlzabbixpw zabbix
 
 # e. Configure the database for Zabbix server
 sed -i "s*# DBPassword=*DBPassword=$mysqlzabbixpw*" /etc/zabbix/zabbix_server.conf
