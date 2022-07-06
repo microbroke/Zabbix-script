@@ -37,7 +37,7 @@ sudo mysql -uroot -e "create user zabbix@localhost identified by '${mysqlzabbixp
 sudo mysql -uroot -e "grant all privileges on zabbix.* to zabbix@localhost;"
 
 # On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
-zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p$mysqlzabbixpw zabbix
+zcat /usr/share/doc/zabbix-server-mysql*/server.sql.gz | mysql -uzabbix -p$mysqlzabbixpw zabbix
 
 # e. Configure the database for Zabbix server
 sed -i "s*# DBPassword=*DBPassword=$mysqlzabbixpw*" /etc/zabbix/zabbix_server.conf
